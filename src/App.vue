@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-        <div class="container mx-auto my-8">
+    <div class="bg-gray-200 py-16">
+        <div class="container bg-white shadow-md mx-auto py-8 px-4">
             <router-view />
         </div>
     </div>

@@ -1,9 +1,10 @@
 <template>
     <div class="flex flex-row flex-wrap justify-evenly">
         <pokemon-list-item
-            v-for="pokemon in pokemonList"
+            v-for="(pokemon, index) in pokemonList"
             :key="pokemon.name"
             :pokemon="pokemon"
+            :number="index + 1"
         />
     </div>
 </template>
@@ -26,7 +27,7 @@ export default {
         const pokemonList = ref([]);
 
         (async () => {
-            const { data } = await pokemonApi.search(100, 0);
+            const { data } = await pokemonApi.search(897, 0);
             pokemonList.value = data.results;
         })();
 
