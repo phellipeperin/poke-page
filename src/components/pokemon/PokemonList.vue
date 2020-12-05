@@ -11,14 +11,9 @@
 
 <script lang="ts">
 import { ref } from 'vue';
-import pokemonApi from '../../application/api/methods/pokemonApi';
+import { search as searchPokemon } from '../../application/api/methods/pokemonApi';
 
 import PokemonListItem from './PokemonListItem.vue';
-
-// interface Pokemon {
-//     name: string,
-//     url: string,
-// }
 
 export default {
     name: 'PokemonList',
@@ -27,7 +22,7 @@ export default {
         const pokemonList = ref([]);
 
         (async () => {
-            const { data } = await pokemonApi.search(897, 0);
+            const { data } = await searchPokemon(897, 0);
             pokemonList.value = data.results;
         })();
 

@@ -1,5 +1,8 @@
 <template>
-    <div class="flex w-1/2 sm:w-1/4 lg:w-1/6 pt-4 pb-8 my-4 cursor-pointer rounded-md transition hover:shadow hover:bg-gray-50">
+    <div
+        class="flex w-1/2 sm:w-1/4 lg:w-1/6 pt-4 pb-8 my-4 cursor-pointer rounded-md transition hover:shadow hover:bg-gray-50"
+        @click="goToEntryPage"
+    >
         <div class="w-32 h-40 mx-auto text-center">
             <img
                 :src="`https://img.pokemondb.net/sprites/bank/normal/${pokemonData.name}.png`"
@@ -18,6 +21,9 @@
 
 <script lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+import { formatPokemonName, formatPokemonNumber } from '../../application/services/pokemonService';
 
 export default {
     name: 'PokemonListItem',
@@ -26,20 +32,19 @@ export default {
         number: { type: Number, required: true },
     },
     setup(props: any) {
-        function formatName(name: string) {
-            const splittedName = name.replace(/-/g, ' ').split(' ');
-            return splittedName.map((elem) => elem.substring(0, 1).toUpperCase() + elem.substring(1)).join(' ');
+        const router = useRouter();
+        function goToEntryPage() {
+            router.push(`/pokemon/${props.number}`);
         }
 
-        function formatNumber(number: number) {
-            if (number < 10) return `00${number}`;
-            if (number < 100) return `0${number}`;
-            return number;
-        }
-
-        const pokemonData = ref({ ...props.pokemon, formattedName: formatName(props.pokemon.name), number: formatNumber(props.number) });
+        const pokemonData = ref({
+            ...props.pokemon,
+            formattedName: formatPokemonName(props.pokemon.name),
+            number: formatPokemonNumber(props.number),
+        });
         return {
             pokemonData,
+            goToEntryPage,
         };
     },
 };
