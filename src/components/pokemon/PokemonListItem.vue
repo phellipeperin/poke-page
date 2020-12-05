@@ -27,7 +27,7 @@ export default {
     },
     setup(props: any) {
         function formatName(name: string) {
-            const splittedName = name.replace('-', ' ').split(' ');
+            const splittedName = name.replace(/-/g, ' ').split(' ');
             return splittedName.map((elem) => elem.substring(0, 1).toUpperCase() + elem.substring(1)).join(' ');
         }
 
