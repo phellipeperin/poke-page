@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import PokemonListPage from '../../pages/PokemonListPage.vue';
 
 const routes = [
-    { path: '/', component: PokemonListPage },
+    { path: '/', name: 'pokemonList', component: PokemonListPage },
 ];
 
 const router = createRouter({

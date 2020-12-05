@@ -12,6 +12,7 @@
         "plugin:vue/recommended"
     ],
     "rules": {
+        "object-curly-newline": 0,
         "vue/no-multiple-template-root": 0,
         "indent": [2, 4],
         "vue/html-indent": [2, 4],
