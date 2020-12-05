@@ -1,6 +1,8 @@
 <template>
-    <div class="container mx-auto py-8">
-        <router-view />
+    <div class="">
+        <div class="container mx-auto my-8">
+            <router-view />
+        </div>
     </div>
 </template>
 

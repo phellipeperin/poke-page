@@ -17,7 +17,8 @@
         "indent": [2, 4],
         "vue/html-indent": [2, 4],
         "vue/script-indent": [2, 4],
-        "import/extensions": 0
+        "import/extensions": 0,
+        "max-len": [2, 150]
     },
     "settings": {
         "import/resolver": {
