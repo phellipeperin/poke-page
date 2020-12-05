@@ -1,6 +1,6 @@
 <template>
     <div>
-        oi
+        <pokemon-image :name="pokemon.species.name" />
     </div>
 </template>
 
@@ -9,9 +9,12 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import { get as getPokemon } from '../application/api/methods/pokemonApi';
+import { formatPokemonName, formatPokemonNumber } from '../application/services/pokemonService';
+import PokemonImage from '../components/pokemon/PokemonImage.vue';
 
 export default {
     name: 'PokemonEntryPage',
+    components: { PokemonImage },
     setup() {
         const router = useRouter();
         const route = useRoute();
@@ -19,7 +22,11 @@ export default {
 
         (async () => {
             const { data } = await getPokemon(Number(route.params.number));
-            pokemon.value = data;
+            pokemon.value = {
+                ...data,
+                formattedName: formatPokemonName(data.species.name),
+                number: formatPokemonNumber(Number(route.params.number)),
+            };
         })();
 
         function goToListPage() {

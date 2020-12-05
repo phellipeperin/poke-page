@@ -4,11 +4,10 @@
         @click="goToEntryPage"
     >
         <div class="w-32 h-40 mx-auto text-center">
-            <img
-                :src="`https://img.pokemondb.net/sprites/bank/normal/${pokemonData.name}.png`"
-                :alt="pokemonData.name"
-                class="w-32 h-32"
-            >
+            <pokemon-image
+                use-sprite
+                :name="pokemonData.name"
+            />
             <p class="text-xs text-gray-400">
                 #{{ pokemonData.number }}
             </p>
@@ -25,8 +24,11 @@ import { useRouter } from 'vue-router';
 
 import { formatPokemonName, formatPokemonNumber } from '../../application/services/pokemonService';
 
+import PokemonImage from './PokemonImage.vue';
+
 export default {
     name: 'PokemonListItem',
+    components: { PokemonImage },
     props: {
         pokemon: { type: Object, required: true },
         number: { type: Number, required: true },
