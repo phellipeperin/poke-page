@@ -2,7 +2,7 @@
     <img
         :src="url"
         :alt="name"
-        :class="`${useSprite ? 'w-32 h-32' : 'mx-auto'}`"
+        :class="`${useSprite ? 'w-32 h-32' : 'block mx-auto'}`"
     >
 </template>
 
