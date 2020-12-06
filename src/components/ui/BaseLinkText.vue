@@ -11,7 +11,7 @@
 import { useRouter } from 'vue-router';
 
 export default {
-    name: 'LinkText',
+    name: 'BaseLinkText',
     props: {
         text: { type: String, required: true },
         url: { type: String, required: true },

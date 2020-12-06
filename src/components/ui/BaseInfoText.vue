@@ -9,7 +9,7 @@
 
 <script lang="ts">
 export default {
-    name: 'InfoText',
+    name: 'BaseInfoText',
     props: {
         text: { type: String, required: true },
         extraClasses: { type: String, default: '' },

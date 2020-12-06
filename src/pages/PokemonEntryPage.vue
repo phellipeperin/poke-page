@@ -4,13 +4,13 @@
         class="text-center"
     >
         <div class="text-left pl-4">
-            <link-text
+            <base-link-text
                 text="back"
                 url="/"
             />
         </div>
         <pokemon-image :name="pokemon.species.name" />
-        <info-text
+        <base-info-text
             :text="`#${pokemon.number}`"
             extra-classes="mt-8"
         />
@@ -19,12 +19,19 @@
         </p>
 
         <div class="flex flex-row flex-wrap justify-evenly mt-20">
-            <div class="flex">
-                <info-text text="Info" />
+            <div class="w-full md:w-5/12">
+                <base-info-text
+                    text="Info"
+                    extra-classes="mb-2"
+                />
                 <pokemon-info :pokemon="pokemon" />
             </div>
-            <div class="flex">
-                <info-text text="Stats" />
+            <div class="w-full md:w-5/12">
+                <base-info-text
+                    text="Stats"
+                    extra-classes="mb-2"
+                />
+                <pokemon-stats :stats="pokemon.stats" />
             </div>
         </div>
     </div>
@@ -37,15 +44,16 @@ import { useRoute } from 'vue-router';
 import { get as getPokemon } from '../application/api/methods/pokemonApi';
 import { formatPokemonName, formatPokemonNumber } from '../application/services/pokemonService';
 
-import LinkText from '../components/ui/LinkText.vue';
-import InfoText from '../components/ui/InfoText.vue';
+import BaseLinkText from '../components/ui/BaseLinkText.vue';
+import BaseInfoText from '../components/ui/BaseInfoText.vue';
 
 import PokemonImage from '../components/pokemon/PokemonImage.vue';
 import PokemonInfo from '../components/pokemon/PokemonInfo.vue';
+import PokemonStats from '../components/pokemon/PokemonStats.vue';
 
 export default {
     name: 'PokemonEntryPage',
-    components: { LinkText, InfoText, PokemonImage, PokemonInfo },
+    components: { BaseLinkText, BaseInfoText, PokemonImage, PokemonInfo, PokemonStats },
     setup() {
         const route = useRoute();
         const pokemon = ref({});
