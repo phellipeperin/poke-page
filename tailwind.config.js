@@ -1,4 +1,4 @@
-const primary = '#DB2777';
+const primary = '#3a539b';
 
 const setThemeColors = (theme) => ({
     ...theme('colors'),
