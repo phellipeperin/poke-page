@@ -19,10 +19,11 @@ export default {
     name: 'PokemonList',
     components: { PokemonListItem },
     setup() {
+        const maxPokemon = 809; // 897
         const pokemonList = ref([]);
 
         (async () => {
-            const { data } = await searchPokemon(897, 0);
+            const { data } = await searchPokemon(maxPokemon, 0);
             pokemonList.value = data.results;
         })();
 
